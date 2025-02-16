@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Book Mockup</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+<body >
+  <div class="book-wrap" id="bookishere">
+    <div class="book">
+      <div class="cover front"></div>
+      <div class="cover spine"></div>
+      <div class="cover pages"></div>
+      <div class="cover back"></div>
+    </div>
+  </div>
+
+  <div class="details" id="deta">
+    <p><span>Book Title:</span> A Passage To India</p>
+    <p><span>Author:</span> E.M. Forster</p>
+  </div>
+
+  <div class="btns">
+    <button id="btn-default" onclick="DefaultView(), playAudio('sounds/v-click.mp3')"><span id="btn-default-icon" class="material-symbols-outlined">play_circle</span>Default View</button>
+    <button id="btn-front" onclick="frontView(), playAudio('sounds/v-click.mp3')"><span id="btn-front-icon" class="material-symbols-outlined">play_circle</span>Front</button>
+    <button id="btn-spine"  onclick="spineView(), playAudio('sounds/v-click.mp3')"><span class="material-symbols-outlined" id="btn-spine-icon">play_circle</span>Spine</button>
+    <button id="btn-back"  onclick="backView(), playAudio('sounds/v-click.mp3')"><span class="material-symbols-outlined" id="btn-back-icon">play_circle</span>Back</button>
+    <button id="btn-frontspine" onclick="front30View(), playAudio('sounds/v-click.mp3')"><span class="material-symbols-outlined" id="btn-frontspine-icon">play_circle</span>Front + Spine</button>
+    <button id="btn-backspine" onclick="back30View(), playAudio('sounds/v-click.mp3')"><span class="material-symbols-outlined" id="btn-backspine-icon">play_circle</span>Back + Spine</button>
+    <button id="btn-zoom" onclick="ZoomInView(), playAudio('sounds/v-click.mp3')"><span class="material-symbols-outlined" id="btn-zoomin-icon">add</span>Zoom In</button>
+    <button id="btn-out" onclick="ZoomOutView(), playAudio('sounds/v-click.mp3')"><span class="material-symbols-outlined" id="btn-zoomout-icon">remove</span>Zoom Out</button>
+    <input type="number" min="-360" max="360" id="inputWidth" placeholder="Angle"/>
+    <button id="btn-rotate" onclick="updateWidth(), playAudio('sounds/v-click.mp3')"><span class="material-symbols-outlined" id="btn-rotate-icon">play_circle</span>Rotate</button>
+    
+    
+  </div>
+  <div class="bg-color-panel">
+    <button class="color-btn" id="color-1" onclick="color1(), playAudio('sounds/b-click.mp3')"><img src="/images/colors/color 1.png" alt=""></button>
+    <button class="color-btn" id="color-2" onclick="color2(), playAudio('sounds/b-click.mp3')"><img src="/images/colors/color 2.png" alt=""></button>
+    <button class="color-btn" id="color-3" onclick="color3(), playAudio('sounds/b-click.mp3')"><img src="/images/colors/color 3.png" alt=""></button>
+    <button class="color-btn" id="color-4" onclick="color4(), playAudio('sounds/b-click.mp3')"><img src="/images/colors/color 4.png" alt=""></button>
+  </div>
+
+  <div id="popup">
+    <h1>Book Visual Mockup</h1>
+    <p style="color: grey;">A book mockup is a tool that helps visualize how a book will look once printed. It shows the cover, spine, and back, giving a realistic preview of the design. This helps authors and designers see the final look, make adjustments, and create promotional images. <br> <p style="color: orangered; font-weight: 600;">It's useful for both paperback and hardback books, ensuring the design is appealing and accurate before printing.</p>
+    </p>
+    <ul style="list-style: none;">
+      <li>✅ Front Cover Mockup</li>
+      <li>✅ Back Cover Mockup</li>
+      <li>✅ Spine Cover Mockup</li>
+      <li>✅ Back Spine Mockup</li>
+      <li>✅ Front Spine Mockup</li>
+    </ul>
+  </div>
+  <button class="important" onclick="clickToView()"><span class="material-symbols-outlined" id="btn-rotate-icon">error</span></button>
+
+
+  <script>
+    function clickToView(){
+      var popup = document.getElementById("popup");
+      if(popup.style.display === "flex"){
+        popup.style.display = "none";
+      }
+      else{
+        popup.style.display = "flex";
+      }
+
+    }
+    function ZoomInView(){
+      document.getElementById("bookishere").style.scale = "1";
+    }
+    function ZoomOutView(){
+      document.getElementById("bookishere").style.scale = ".8";
+    }
+    function DefaultView(){
+      document.getElementById("bookishere").style.transform = "rotateY(30deg)";
+    }
+    function frontView(){
+      document.getElementById("bookishere").style.transform = "rotateY(0deg)";
+    }
+    function spineView(){
+      document.getElementById("bookishere").style.transform = "rotateY(90deg)";
+    }
+    function backView(){
+      document.getElementById("bookishere").style.transform = "rotateY(180deg)";
+    }
+    function front30View(){
+      document.getElementById("bookishere").style.transform = "rotateY(30deg)";
+    }
+    function back30View(){
+      document.getElementById("bookishere").style.transform = "rotateY(150deg)";
+    }
+    function color1(){
+      // var front = document.querySelector('.front');
+      // var back = document.querySelector('.back');
+      // var spine = document.querySelector('.spine');
+
+      // front.style.backgroundImage = "url('images/front.png')";
+      // back.style.backgroundImage = "url('images/back.png')";
+      // spine.style.backgroundImage = "url('images/spine.png')";
+
+
+      document.body.style.backgroundColor = '#1E1E1E';
+      document.getElementById('color-1').style.borderColor = 'orangered';
+      document.getElementById('color-2').style.borderColor = 'transparent';
+      document.getElementById('color-3').style.borderColor = 'transparent';
+      document.getElementById('color-4').style.borderColor = 'transparent';
+      document.getElementById('deta').style.color = 'white';
+    }
+    function color2(){
+      // var front = document.querySelector('.front');
+      // var back = document.querySelector('.back');
+      // var spine = document.querySelector('.spine');
+
+      // front.style.backgroundImage = "url('images/front 1.png')";
+      // back.style.backgroundImage = "url('images/back 1.png')";
+      // spine.style.backgroundImage = "url('images/spine 1.png')";
+
+      document.body.style.backgroundColor = '#F3F3F3';
+      document.getElementById('color-2').style.borderColor = 'orangered';
+      document.getElementById('color-1').style.borderColor = 'transparent';
+      document.getElementById('color-3').style.borderColor = 'transparent';
+      document.getElementById('color-4').style.borderColor = 'transparent';
+      document.getElementById('deta').style.color = 'black';
+    }
+    function color3(){
+      // var front = document.querySelector('.front');
+      // var back = document.querySelector('.back');
+      // var spine = document.querySelector('.spine');
+
+      // front.style.backgroundImage = "url('images/front 2.png')";
+      // back.style.backgroundImage = "url('images/back 2.png')";
+      // spine.style.backgroundImage = "url('images/spine 2.png')";
+
+      document.body.style.backgroundColor = '#FFFFCA';
+      document.getElementById('color-3').style.borderColor = 'orangered';
+      document.getElementById('color-2').style.borderColor = 'transparent';
+      document.getElementById('color-1').style.borderColor = 'transparent';
+      document.getElementById('color-4').style.borderColor = 'transparent';
+      document.getElementById('deta').style.color = 'black';
+    }
+    function color4(){
+      document.body.style.backgroundColor = '#D4FFD4';
+      document.getElementById('color-4').style.borderColor = 'orangered';
+      document.getElementById('color-2').style.borderColor = 'transparent';
+      document.getElementById('color-3').style.borderColor = 'transparent';
+      document.getElementById('color-1').style.borderColor = 'transparent';
+      document.getElementById('deta').style.color = 'black';
+    }
+    function playAudio(url) {
+    new Audio(url).play();
+  }
+
+  function updateWidth() {
+  var inputWidth = document.getElementById("inputWidth").value;
+  var bookishere = document.getElementById("bookishere");
+  bookishere.style.transform = "rotateY(" +inputWidth + "deg)";
+}
+
+function printDiv2(div){
+    html2canvas((div), {
+        onrendered: function(canvas) {
+            var img = canvas.toDataURL();
+            window.open(img);
+
+            var blob = new Blob(img, {type: "image/jpeg"});
+            var filesaver = saveAs(blob, "my image.png");
+      }
+    });
+}
+  </script>
+</body>
+</html>
